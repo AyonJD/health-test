@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.customButton_outlined {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: all 0.5s;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.customButton_outlined:hover {
+  background-color: #34c9b0;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #34c9b0;
+}
+
+.hero_section {
+  padding-top: 64px;
+  background: linear-gradient(45deg, #00020f, #062c31, #00020f);
+  min-height: 70vh;
+}
