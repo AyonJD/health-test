@@ -2,6 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+#nav-link {
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  position: relative;
+  transition: all 0.5s;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+#nav-link:hover {
+  background-color: #34c9b0;
+  color: #fff;
+  font-weight: 600;
+}
+
+#nav-link:before {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #34c9b0;
+  border-width: 0 0 3px 3px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+#nav-link:hover:before {
+  opacity: 1;
+  bottom: -8px;
+  left: -8px;
+}
+
+#nav-link:after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #34c9b0;
+  border-width: 3px 3px 0 0;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+#nav-link:hover:after {
+  opacity: 1;
+  top: -8px;
+  right: -8px;
+}
+
+.hero_section {
+  padding-top: 64px;
+  background: linear-gradient(45deg, #00020f, #062c31, #00020f);
+  min-height: 70vh;
+}
+
 .customButton_outlined {
   border: 1px solid #fff;
   color: #fff;
@@ -19,6 +87,123 @@
   color: #fff;
   font-weight: 600;
   border: 1px solid #34c9b0;
+}
+
+.scroll-section-outer {
+  overflow: hidden;
+  padding-top: 80px;
+  background: linear-gradient(45deg, #00020f, #062c31, #00020f);
+  margin-right: 0 !important;
+}
+
+.scroll-section-inner {
+  height: 80vh;
+  width: 400vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.scroll-section {
+  margin-right: 20px !important;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero_one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hero_one h3 {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+#book_wrapper img {
+  padding-left: 10px;
+  margin-top: -60px;
+  width: 160px;
+  height: 260px;
+  box-shadow: 2px 2px 5px #9e9e9e4b;
+  -webkit-box-shadow: 5px 5px 5px #9e9e9e4b;
+  -moz-box-shadow: 3px 3px 5px #9e9e9e4b;
+}
+#book_section {
+  margin-left: 30%;
+  margin-top: 10%;
+  margin-bottom: 30%;
+  width: 550px;
+  height: 260px;
+  background-color: white;
+  border-radius: 10px;
+}
+#book_title {
+  margin-top: -190px;
+  font-size: 12px;
+  padding-left: 190px;
+  font-family: 'Comfortaa', cursive;
+  color: #464647;
+}
+#book_author {
+  padding-left: 190px;
+  font-family: 'Comfortaa', cursive;
+  color: #555659;
+}
+#rating {
+  font-family: 'Comfortaa', cursive;
+  padding-left: 190px;
+}
+#review {
+  font-family: 'Comfortaa', cursive;
+  color: #555659;
+  width: 400px;
+  padding-left: 190px;
+  font-size: 13px;
+  text-align: justify;
+}
+#read_by {
+  float: right;
+  margin-right: -40px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Source Code Pro', cursive;
+  background: linear-gradient(45deg, #062c31, #00020f);
+  box-shadow: 2px 2px 5px #062c31;
+}
+
+.book_card {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, #062c31, #00020f);
+}
+
+.transition-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #34c9b0);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, #00020f);
 }
 
 .hero_section {
