@@ -1,4 +1,4 @@
-export const data =  [
+export const FAKE_DATA =  [
     {
       category: "Category 1",
       tests: [
