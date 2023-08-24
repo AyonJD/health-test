@@ -1,7 +1,6 @@
 import { FAKE_DATA } from '@/constant/fakeData'
 import {
   Box,
-  Button,
   FormControl,
   Grid,
   InputLabel,
@@ -10,6 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
+import { Button } from '../shared/CommonButton'
 
 const SelectionForm = () => {
   const [selectedTest, setSelectedTest] = useState('')
@@ -36,10 +36,14 @@ const SelectionForm = () => {
     console.log(formData)
   }
 
+  const addAnother = () => {
+    console.log('add another')
+  }
+
   return (
     <Box>
       <Box sx={{ maxWidth: '100%' }}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Grid container spacing={2}>
             <Grid
               item
@@ -146,15 +150,11 @@ const SelectionForm = () => {
               </Grid>
             )}
           </Grid>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ marginTop: 4 }}
-          >
-            Submit
-          </Button>
         </form>
+        <Button.CommonSubmitButton func={handleSubmit} type="submit">
+          Save
+        </Button.CommonSubmitButton>
+        <Button.CommonButton func={addAnother}>Add Another</Button.CommonButton>
       </Box>
     </Box>
   )
