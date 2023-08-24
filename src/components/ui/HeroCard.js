@@ -3,9 +3,8 @@ import HeroBanner from '@/assets/hero_banner.webm'
 
 const HeroCard = () => {
   return (
-    // <Box className={'bg-[#e2e1e0]'}>
       <Container>
-        <div className="bg-white -mt-20 h-96 overflow-hidden flex items-end rounded-3xl">
+        <div className="bg-white md:-mt-20 -mt-10  h-96 overflow-hidden flex items-end rounded-3xl">
           <video
             className="w-full h-full object-cover object-center"
             autoPlay
@@ -17,7 +16,6 @@ const HeroCard = () => {
           </video>
         </div>
       </Container>
-    // </Box>
   )
 }
 

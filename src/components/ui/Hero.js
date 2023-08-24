@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <Box>
       <Container>
-        <Grid container className="pt-4 pb-5">
+        <Grid container className="pt-4 pb-10">
           <Grid item xs={12} md={8} gap={2}>
             <Box className="flex items-center ">
               <Typography
