@@ -195,6 +195,33 @@ body {
   height: 100%;
 }
 
+.menu_item_index {
+  z-index: 200000 !important;
+}
+
+/* .css-t3ofol:first-of-type {
+  box-shadow: none !important;
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 0 !important;
+}
+.css-or4mqv:last-of-type {
+  box-shadow: none !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 0 !important;
+} */
+
+.text_white {
+  color: #fff !important;
+}
+
+table {
+  border-radius: 8px !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

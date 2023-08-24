@@ -11,39 +11,45 @@ import {
 import React, { useState } from 'react'
 import { Button } from '../shared/CommonButton'
 
-const SelectionForm = () => {
+const SelectionForm = ({ onSet }) => {
   const [selectedTest, setSelectedTest] = useState('')
   const [selectedCenters, setSelectedCenters] = useState('')
   const [selectedBranches, setSelectedBranches] = useState('')
+  const [price, setPrice] = useState(null)
 
-  const [formData, setFormData] = useState({
+  const [singleFormData, setSingleFormData] = useState({
     category: '',
     test: '',
     center: '',
     branches: '',
   })
 
+  console.log(selectedCenters)
+
   const handleChange = event => {
     const { name, value } = event.target
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value,
-    }))
+    setSingleFormData({ ...singleFormData, [name]: value, price })
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(formData)
+    onSet(prev => {
+      if (prev.length === 0) {
+        return [singleFormData]
+      } else {
+        return [...prev, singleFormData]
+      }
+    })
   }
 
   const addAnother = () => {
-    console.log('add another')
+    console.log(selectedBranches)
   }
 
   return (
     <Box>
       <Box sx={{ maxWidth: '100%' }}>
-        <form>
+        <form className='mb-2'>
           <Grid container spacing={2}>
             <Grid
               item
@@ -55,7 +61,7 @@ const SelectionForm = () => {
                 <Select
                   name="category"
                   label="Category"
-                  value={formData.category || ''}
+                  value={singleFormData.category || ''}
                   onChange={handleChange}
                 >
                   {FAKE_DATA.map((item, itemIndex) => (
@@ -79,7 +85,7 @@ const SelectionForm = () => {
                   <Select
                     name="test"
                     label="Test"
-                    value={formData.test || ''}
+                    value={singleFormData.test || ''}
                     onChange={handleChange}
                   >
                     {selectedTest.map((item, itemIndex) => (
@@ -110,14 +116,17 @@ const SelectionForm = () => {
                   <Select
                     name="center"
                     label="Center"
-                    value={formData.center || ''}
+                    value={singleFormData.center || ''}
                     onChange={handleChange}
                   >
                     {selectedCenters.map((item, itemIndex) => (
                       <MenuItem value={item.center} key={itemIndex}>
                         <Typography
                           style={{ display: 'block' }}
-                          onClick={() => setSelectedBranches(item.branches)}
+                          onClick={() => {
+                            setSelectedBranches(item.branches)
+                            setPrice(item.testPrice)
+                          }}
                         >
                           {item.center}
                         </Typography>
@@ -135,7 +144,7 @@ const SelectionForm = () => {
                   <Select
                     name="branches"
                     label="Branch"
-                    value={formData.branches || ''}
+                    value={singleFormData.branches || ''}
                     onChange={handleChange}
                   >
                     {selectedBranches.map((item, itemIndex) => (
