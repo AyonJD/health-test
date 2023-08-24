@@ -1,3 +1,4 @@
+import { Button } from '@/components/shared/CommonButton'
 import MainNav from '@/components/shared/MainNav'
 import Hero from '@/components/ui/Hero'
 import HeroCard from '@/components/ui/HeroCard'
@@ -7,20 +8,33 @@ import {
   Box,
   Card,
   Container,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
   Typography,
 } from '@mui/material'
 import { gsap } from 'gsap'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const router = useRouter()
   const [formData, setFormData] = useState([])
+  const [subtotal, setSubtotal] = useState(0)
+  const [executive, setExecutive] = useState('')
+
+  useEffect(() => {
+    setSubtotal(formData.reduce((acc, cur) => acc + cur.price, 0))
+  }, [formData])
 
   useEffect(() => {
     const navbar = document.querySelector('#navbar')
@@ -43,130 +57,187 @@ export default function Home() {
     }
   }, [])
 
-  console.log(formData)
+  const handlePrint = () => {
+    const dataArray = encodeURIComponent(JSON.stringify(formData))
+    const subtotalParam = encodeURIComponent(subtotal)
+    const executiveParam = encodeURIComponent(executive)
+
+    router.push({
+      pathname: '/invoice',
+      query: {
+        dataArray,
+        subtotal: subtotalParam,
+        executive: executiveParam,
+      },
+    })
+  }
 
   return (
     <>
-      <Box className="hero_section">
+      <Box className="hero_section ">
         <MainNav />
         <Hero />
       </Box>
       <HeroCard />
+      <Box className="bg-[#e2e1e0] ">
+        <Container maxWidth="lg" sx={{ py: 4 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <Card sx={{ mb: 3, p: 2 }}>
+                <Typography
+                  variant="h5"
+                  component="h1"
+                  paragraph
+                  className="font-semibold"
+                >
+                  Add Test
+                </Typography>
 
-      <Container maxWidth="lg" sx={{ my: 4 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ mb: 3, p: 2 }}>
-              <Typography
-                variant="h5"
-                component="h1"
-                paragraph
-                className="font-semibold"
-              >
-                Add Test
-              </Typography>
+                <SelectionForm onSet={setFormData} />
+              </Card>
 
-              <SelectionForm onSet={setFormData} />
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ mb: 3, p: 2 }}>
-              <Typography
-                variant="h5"
-                component="h1"
-                paragraph
-                className="font-semibold"
-              >
-                Test List
-              </Typography>
-
-              <TableContainer
+              <Card
                 sx={{
-                  borderRadius: 2,
-                  borderWidth: 1,
-                  borderStyle: 'solid',
-                  borderLeft: 0,
-                  borderRight: 0,
-                  borderTop: 0,
-                  paddingBottom: 2,
+                  mt: 3,
+                  p: 2,
                 }}
               >
-                <Table sx={{ background: '#B2BEB5' }}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                      >
-                        Serial
-                      </TableCell>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                        align="center"
-                      >
-                        Category
-                      </TableCell>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                        align="center"
-                      >
-                        Test
-                      </TableCell>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                        align="center"
-                      >
-                        Center
-                      </TableCell>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                        align="center"
-                      >
-                        Branch
-                      </TableCell>
-                      <TableCell
-                        sx={{ background: '#000', whiteSpace: 'nowrap' }}
-                        className="text_white"
-                        align="right"
-                      >
-                        Price
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {formData.map((row, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{index}</TableCell>
-                        <TableCell align="center">{row.category}</TableCell>
-                        <TableCell align="center">{row.test}</TableCell>
-                        <TableCell align="center">{row.center}</TableCell>
-                        <TableCell align="center">{row.branches}</TableCell>
-                        <TableCell align="right">{row.price}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                <FormControl fullWidth sx={{ maxWidth: '100%' }}>
+                  <InputLabel>Select Executive</InputLabel>
+                  <Select
+                    label="Select Executive"
+                    name="executive"
+                    value={executive || ''}
+                    onChange={e => setExecutive(e.target.value)}
+                  >
+                    <MenuItem value="Executive 1">Executive 1</MenuItem>
+                    <MenuItem value="Executive 2">Executive 2</MenuItem>
+                    <MenuItem value="Executive 3">Executive 3</MenuItem>
+                  </Select>
+                </FormControl>
 
-              {/* <Typography
-                sx={{ textAlign: 'right', marginRight: 2, marginTop: 2 }}
-                variant="h6"
-                component="h6"
-                paragraph
-              >
-                {`Subtotal: ${allProducts.reduce(
-                  (acc, cur) => acc + cur.number * cur.price,
-                  0
-                )}`}
-              </Typography> */}
-            </Card>
+                <Button.CommonButton func={handlePrint}>
+                  Print
+                </Button.CommonButton>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card sx={{ mb: 3, p: 2 }}>
+                <Typography
+                  variant="h5"
+                  component="h1"
+                  paragraph
+                  className="font-semibold"
+                >
+                  Test List
+                </Typography>
+
+                <TableContainer
+                  sx={{
+                    borderRadius: 2,
+                    borderWidth: 1,
+                    borderStyle: 'solid',
+                    borderLeft: 0,
+                    borderRight: 0,
+                    borderTop: 0,
+                    paddingBottom: 2,
+                  }}
+                >
+                  <Table sx={{ background: '#B2BEB5' }}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                        >
+                          Serial
+                        </TableCell>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                          align="center"
+                        >
+                          Category
+                        </TableCell>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                          align="center"
+                        >
+                          Test
+                        </TableCell>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                          align="center"
+                        >
+                          Center
+                        </TableCell>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                          align="center"
+                        >
+                          Branch
+                        </TableCell>
+                        <TableCell
+                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
+                          className="text_white"
+                          align="right"
+                        >
+                          Price
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    {formData.length === 0 ? (
+                      <TableBody>
+                        <TableRow>
+                          <TableCell colSpan={6} align="center">
+                            No Data Found
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    ) : (
+                      <TableBody>
+                        {formData.map((row, index) => (
+                          <TableRow key={index}>
+                            <TableCell>{index + 1}</TableCell>
+                            <TableCell align="center">{row.category}</TableCell>
+                            <TableCell align="center">{row.test}</TableCell>
+                            <TableCell align="center">{row.center}</TableCell>
+                            <TableCell align="center">{row.branches}</TableCell>
+                            <TableCell align="right">{row.price}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    )}
+                  </Table>
+                </TableContainer>
+                {formData.length !== 0 && (
+                  <>
+                    <Typography
+                      sx={{ textAlign: 'right', marginRight: 2, marginTop: 2 }}
+                      variant="body"
+                      className="font-semibold"
+                      paragraph
+                    >
+                      {`Subtotal: ${subtotal}`}
+                    </Typography>
+
+                    <TextField
+                      sx={{ width: '100%' }}
+                      label="Subtotal"
+                      variant="outlined"
+                      value={subtotal}
+                      onChange={e => setSubtotal(e.target.value)}
+                    />
+                  </>
+                )}
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
     </>
   )
 }

@@ -13,7 +13,7 @@ import AdbIcon from '@mui/icons-material/Adb'
 import CustomButton from './CustomButton'
 import { COLORS } from '@/constant/color'
 
-const pages = [{ name: 'Books', path: '/book' }]
+const pages = [{ name: 'Demo Menu', path: '/' }]
 
 function MainNav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)

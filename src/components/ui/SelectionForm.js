@@ -40,10 +40,28 @@ const SelectionForm = ({ onSet }) => {
         return [...prev, singleFormData]
       }
     })
+    setSingleFormData({
+      category: '',
+      test: '',
+      center: '',
+      branches: '',
+    })
   }
 
   const addAnother = () => {
-    console.log(selectedBranches)
+    onSet(prev => {
+      if (prev.length === 0) {
+        return [singleFormData]
+      } else {
+        return [...prev, singleFormData]
+      }
+    })
+    setSingleFormData({
+      category: '',
+      test: '',
+      center: '',
+      branches: '',
+    })
   }
 
   return (

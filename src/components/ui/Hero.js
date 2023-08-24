@@ -18,7 +18,7 @@ const Hero = () => {
                   },
                 }}
               >
-                Get Free Books
+                Best Result
               </Typography>
               <Box
                 sx={{
@@ -56,8 +56,7 @@ const Hero = () => {
                   },
                 }}
               >
-                In{' '}
-                <span style={{ color: `${COLORS.PRIMARY}` }}>Book Trekker</span>
+                In <span style={{ color: `${COLORS.PRIMARY}` }}>RMS</span>
               </Typography>
             </Box>
           </Grid>
@@ -87,7 +86,7 @@ const Hero = () => {
                     fontWeight: 'bold',
                   }}
                 >
-                  12K <span className="text-[#34C9B0]">+</span>
+                  80K <span className="text-[#34C9B0]">+</span>
                 </Typography>
                 <Typography
                   sx={{
@@ -96,7 +95,7 @@ const Hero = () => {
                     textAlign: 'justify',
                   }}
                 >
-                  Readers
+                  Patients
                 </Typography>
               </Grid>
               <Grid item xs={4}>
@@ -117,7 +116,7 @@ const Hero = () => {
                     textAlign: 'justify',
                   }}
                 >
-                  Free Books
+                  Tests
                 </Typography>
               </Grid>
               <Grid item xs={4}>
@@ -129,7 +128,7 @@ const Hero = () => {
                     fontWeight: 'bold',
                   }}
                 >
-                  100K <span className="text-[#34C9B0]">+</span>
+                  200K <span className="text-[#34C9B0]">+</span>
                 </Typography>
                 <Typography
                   sx={{
@@ -138,7 +137,7 @@ const Hero = () => {
                     textAlign: 'justify',
                   }}
                 >
-                  Reviews
+                  Positive Reviews
                 </Typography>
               </Grid>
             </Grid>
