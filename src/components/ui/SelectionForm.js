@@ -12,12 +12,7 @@ import {
 import React, { useState } from 'react'
 import { Buttons } from '../shared/CommonButton'
 
-const SelectionForm = ({
-  onSet,
-  selectedTest,
-  setSelectedTest,
-  selectedCategory,
-}) => {
+const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
   const [selectedCenters, setSelectedCenters] = useState('')
   const [selectedBranches, setSelectedBranches] = useState('')
   const [price, setPrice] = useState(null)
@@ -36,6 +31,15 @@ const SelectionForm = ({
 
   const handleSubmit = event => {
     event.preventDefault()
+    if (
+      !selectedCategory ||
+      !singleFormData.test ||
+      !singleFormData.center ||
+      !singleFormData.branches
+    ) {
+      alert('Please fill all the fields')
+      return
+    }
     onSet(prev => {
       singleFormData.category = selectedCategory
       if (prev.length === 0) {
@@ -53,6 +57,16 @@ const SelectionForm = ({
   }
 
   const addAnother = () => {
+    if (
+      !selectedCategory ||
+      !singleFormData.test ||
+      !singleFormData.center ||
+      !singleFormData.branches
+    ) {
+      alert('Please fill all the fields')
+      return
+    }
+
     onSet(prev => {
       singleFormData.category = selectedCategory
       if (prev.length === 0) {

@@ -32,12 +32,13 @@ export default function Home() {
   const router = useRouter()
   const [selectedIndex, setSelectedIndex] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [testId, setTestId] = useState('')
+
   const [formData, setFormData] = useState([])
   const [subtotal, setSubtotal] = useState(0)
   const [executive, setExecutive] = useState('')
 
   const [selectedTest, setSelectedTest] = useState('')
-  console.log(formData)
 
   useEffect(() => {
     setSubtotal(formData.reduce((acc, cur) => acc + cur.price, 0))
@@ -65,9 +66,15 @@ export default function Home() {
   }, [])
 
   const handlePrint = () => {
+    if (formData.length === 0) {
+      alert('Please add test first')
+      return
+    }
+
     const dataArray = encodeURIComponent(JSON.stringify(formData))
     const subtotalParam = encodeURIComponent(subtotal)
     const executiveParam = encodeURIComponent(executive)
+    const testIdParam = encodeURIComponent(testId)
 
     router.push({
       pathname: '/invoice',
@@ -75,6 +82,7 @@ export default function Home() {
         dataArray,
         subtotal: subtotalParam,
         executive: executiveParam,
+        testId: testIdParam,
       },
     })
   }
@@ -136,6 +144,13 @@ export default function Home() {
                   p: 2,
                 }}
               >
+                <TextField
+                  sx={{ width: '100%', marginBottom: 2 }}
+                  label="Manual Test ID"
+                  variant="outlined"
+                  onChange={e => setTestId(e.target.value)}
+                />
+
                 <FormControl fullWidth sx={{ maxWidth: '100%' }}>
                   <InputLabel>Select Executive</InputLabel>
                   <Select
@@ -180,7 +195,7 @@ export default function Home() {
                     borderRight: 0,
                     borderTop: 0,
                     paddingBottom: 2,
-                    height: formData.length === 0 ? '252px' : '285px',
+                    height: formData.length === 0 ? '325px' : '355px',
                     overflowY: 'scroll',
                   }}
                 >

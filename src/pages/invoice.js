@@ -12,6 +12,7 @@ const Invoice = () => {
   )
   const subtotal = decodeURIComponent(router.query.subtotal || '')
   const executive = decodeURIComponent(router.query.executive || '')
+  const testId = decodeURIComponent(router.query.testId || '')
 
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -66,8 +67,8 @@ const Invoice = () => {
         <div id="invoice">
           <h1>INVOICE</h1>
           <div class="date">ID: {generateInvoiceId(executive)}</div>
+          <div class="date">Test ID: {testId}</div>
           <div class="date">Date of Invoice: 01/06/2014</div>
-          <div class="date">Due Date: 30/06/2014</div>
         </div>
       </div>
       <table id="table" border="0" cellspacing="0" cellpadding="0">
