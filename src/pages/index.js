@@ -1,11 +1,13 @@
-import { Button } from '@/components/shared/CommonButton'
+import { Buttons } from '@/components/shared/CommonButton'
 import MainNav from '@/components/shared/MainNav'
 import Hero from '@/components/ui/Hero'
-import HeroCard from '@/components/ui/HeroCard'
+// import HeroCard from '@/components/ui/HeroCard'
 import SelectionForm from '@/components/ui/SelectionForm'
 import { COLORS } from '@/constant/color'
+import { FAKE_DATA } from '@/constant/fakeData'
 import {
   Box,
+  Button,
   Card,
   Container,
   FormControl,
@@ -31,6 +33,8 @@ export default function Home() {
   const [formData, setFormData] = useState([])
   const [subtotal, setSubtotal] = useState(0)
   const [executive, setExecutive] = useState('')
+
+  const [selectedTest, setSelectedTest] = useState('')
 
   useEffect(() => {
     setSubtotal(formData.reduce((acc, cur) => acc + cur.price, 0))
@@ -82,6 +86,21 @@ export default function Home() {
       <Box className="bg-[#e2e1e0] ">
         <Container maxWidth="lg" sx={{ py: 4 }}>
           <Grid container spacing={2}>
+            <Grid item xs={12}>
+              {FAKE_DATA.map((item, itemIndex) => (
+                <Button
+                  key={itemIndex}
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  sx={{ marginRight: 1, marginBottom: 1 }}
+                  onClick={() => setSelectedTest(item.tests)}
+                >
+                  {item.category}
+                </Button>
+              ))}
+            </Grid>
+
             <Grid item xs={12} md={6}>
               <Card sx={{ mb: 3, p: 2 }}>
                 <Typography
@@ -93,7 +112,11 @@ export default function Home() {
                   Add Test
                 </Typography>
 
-                <SelectionForm onSet={setFormData} />
+                <SelectionForm
+                  onSet={setFormData}
+                  selectedTest={selectedTest}
+                  setSelectedTest={setSelectedTest}
+                />
               </Card>
 
               <Card
@@ -116,9 +139,9 @@ export default function Home() {
                   </Select>
                 </FormControl>
 
-                <Button.CommonButton func={handlePrint}>
+                <Buttons.CommonButton func={handlePrint}>
                   Print
-                </Button.CommonButton>
+                </Buttons.CommonButton>
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>

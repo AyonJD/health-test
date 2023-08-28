@@ -430,3 +430,8 @@ a {
   background: linear-gradient(45deg, #00020f, #062c31, #00020f);
   min-height: 70vh;
 }
+
+.MuiButtonBase-root {
+  background-color: #05272d !important;
+  color: #fff !important;
+}

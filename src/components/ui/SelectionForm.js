@@ -1,6 +1,7 @@
 import { FAKE_DATA } from '@/constant/fakeData'
 import {
   Box,
+  Button,
   FormControl,
   Grid,
   InputLabel,
@@ -9,10 +10,9 @@ import {
   Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
-import { Button } from '../shared/CommonButton'
+import { Buttons } from '../shared/CommonButton'
 
-const SelectionForm = ({ onSet }) => {
-  const [selectedTest, setSelectedTest] = useState('')
+const SelectionForm = ({ onSet, selectedTest, setSelectedTest }) => {
   const [selectedCenters, setSelectedCenters] = useState('')
   const [selectedBranches, setSelectedBranches] = useState('')
   const [price, setPrice] = useState(null)
@@ -23,8 +23,6 @@ const SelectionForm = ({ onSet }) => {
     center: '',
     branches: '',
   })
-
-  console.log(selectedCenters)
 
   const handleChange = event => {
     const { name, value } = event.target
@@ -67,14 +65,14 @@ const SelectionForm = ({ onSet }) => {
   return (
     <Box>
       <Box sx={{ maxWidth: '100%' }}>
-        <form className='mb-2'>
+        <form className="mb-2">
           <Grid container spacing={2}>
             <Grid
               item
               xs={12}
               md={selectedTest && selectedTest.length > 0 ? 6 : 12}
             >
-              <FormControl fullWidth sx={{ maxWidth: '100%' }}>
+              {/* <FormControl fullWidth sx={{ maxWidth: '100%' }}>
                 <InputLabel>Category</InputLabel>
                 <Select
                   name="category"
@@ -93,11 +91,11 @@ const SelectionForm = ({ onSet }) => {
                     </MenuItem>
                   ))}
                 </Select>
-              </FormControl>
+              </FormControl> */}
             </Grid>
 
             {selectedTest && selectedTest.length > 0 && (
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12}>
                 <FormControl fullWidth sx={{ maxWidth: '100%' }}>
                   <InputLabel>Test</InputLabel>
                   <Select
@@ -178,10 +176,12 @@ const SelectionForm = ({ onSet }) => {
             )}
           </Grid>
         </form>
-        <Button.CommonSubmitButton func={handleSubmit} type="submit">
+        <Buttons.CommonSubmitButton func={handleSubmit} type="submit">
           Save
-        </Button.CommonSubmitButton>
-        <Button.CommonButton func={addAnother}>Add Another</Button.CommonButton>
+        </Buttons.CommonSubmitButton>
+        <Buttons.CommonButton func={addAnother}>
+          Add Another
+        </Buttons.CommonButton>
       </Box>
     </Box>
   )

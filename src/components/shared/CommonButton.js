@@ -21,7 +21,7 @@ const CommonButton = ({ children, func }) => {
   )
 }
 
-export const Button = {
+export const Buttons = {
     CommonSubmitButton,
     CommonButton
 }
