@@ -1,7 +1,5 @@
-import { FAKE_DATA } from '@/constant/fakeData'
 import {
   Box,
-  Button,
   FormControl,
   Grid,
   InputLabel,
@@ -11,6 +9,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Buttons } from '../shared/CommonButton'
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
 
 const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
   const [selectedCenters, setSelectedCenters] = useState('')
@@ -92,28 +91,7 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
               item
               xs={12}
               md={selectedTest && selectedTest.length > 0 ? 6 : 12}
-            >
-              {/* <FormControl fullWidth sx={{ maxWidth: '100%' }}>
-                <InputLabel>Category</InputLabel>
-                <Select
-                  name="category"
-                  label="Category"
-                  value={singleFormData.category || ''}
-                  onChange={handleChange}
-                >
-                  {FAKE_DATA.map((item, itemIndex) => (
-                    <MenuItem value={item.category} key={itemIndex}>
-                      <Typography
-                        style={{ display: 'block' }}
-                        onClick={() => setSelectedTest(item.tests)}
-                      >
-                        {item.category}
-                      </Typography>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl> */}
-            </Grid>
+            ></Grid>
 
             {selectedTest && selectedTest.length > 0 && (
               <Grid item xs={12}>
@@ -197,12 +175,19 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
             )}
           </Grid>
         </form>
-        <Buttons.CommonSubmitButton func={handleSubmit} type="submit">
-          Save
-        </Buttons.CommonSubmitButton>
-        <Buttons.CommonButton func={addAnother}>
-          Add Another
-        </Buttons.CommonButton>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'center' }}>
+          <Buttons.CommonSubmitButton func={handleSubmit} type="submit">
+            Save
+          </Buttons.CommonSubmitButton>
+          <LibraryAddIcon
+            onClick={addAnother}
+            sx={{
+              color: '#05272d',
+              fontSize: 40,
+              cursor: 'pointer',
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   )
