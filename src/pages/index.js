@@ -30,11 +30,14 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const router = useRouter()
+  const [selectedIndex, setSelectedIndex] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState('')
   const [formData, setFormData] = useState([])
   const [subtotal, setSubtotal] = useState(0)
   const [executive, setExecutive] = useState('')
 
   const [selectedTest, setSelectedTest] = useState('')
+  console.log(formData)
 
   useEffect(() => {
     setSubtotal(formData.reduce((acc, cur) => acc + cur.price, 0))
@@ -86,15 +89,22 @@ export default function Home() {
       <Box className="bg-[#e2e1e0] ">
         <Container maxWidth="lg" sx={{ py: 4 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sx={{ textAlign: 'center' }}>
               {FAKE_DATA.map((item, itemIndex) => (
                 <Button
+                  className={`category_button ${
+                    selectedIndex === itemIndex ? 'active_category' : ''
+                  }`}
                   key={itemIndex}
                   variant="outlined"
                   color="primary"
                   size="small"
                   sx={{ marginRight: 1, marginBottom: 1 }}
-                  onClick={() => setSelectedTest(item.tests)}
+                  onClick={() => {
+                    setSelectedTest(item.tests)
+                    setSelectedIndex(itemIndex)
+                    setSelectedCategory(item.category)
+                  }}
                 >
                   {item.category}
                 </Button>
@@ -116,6 +126,7 @@ export default function Home() {
                   onSet={setFormData}
                   selectedTest={selectedTest}
                   setSelectedTest={setSelectedTest}
+                  selectedCategory={selectedCategory}
                 />
               </Card>
 
@@ -145,7 +156,12 @@ export default function Home() {
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Card sx={{ mb: 3, p: 2 }}>
+              <Card
+                sx={{
+                  mb: 3,
+                  p: 2,
+                }}
+              >
                 <Typography
                   variant="h5"
                   component="h1"
@@ -164,9 +180,15 @@ export default function Home() {
                     borderRight: 0,
                     borderTop: 0,
                     paddingBottom: 2,
+                    height: formData.length === 0 ? '252px' : '285px',
+                    overflowY: 'scroll',
                   }}
                 >
-                  <Table sx={{ background: '#B2BEB5' }}>
+                  <Table
+                    sx={{
+                      background: '#B2BEB5',
+                    }}
+                  >
                     <TableHead>
                       <TableRow>
                         <TableCell

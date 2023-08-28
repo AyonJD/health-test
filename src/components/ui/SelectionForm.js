@@ -12,7 +12,12 @@ import {
 import React, { useState } from 'react'
 import { Buttons } from '../shared/CommonButton'
 
-const SelectionForm = ({ onSet, selectedTest, setSelectedTest }) => {
+const SelectionForm = ({
+  onSet,
+  selectedTest,
+  setSelectedTest,
+  selectedCategory,
+}) => {
   const [selectedCenters, setSelectedCenters] = useState('')
   const [selectedBranches, setSelectedBranches] = useState('')
   const [price, setPrice] = useState(null)
@@ -32,6 +37,7 @@ const SelectionForm = ({ onSet, selectedTest, setSelectedTest }) => {
   const handleSubmit = event => {
     event.preventDefault()
     onSet(prev => {
+      singleFormData.category = selectedCategory
       if (prev.length === 0) {
         return [singleFormData]
       } else {
@@ -48,6 +54,7 @@ const SelectionForm = ({ onSet, selectedTest, setSelectedTest }) => {
 
   const addAnother = () => {
     onSet(prev => {
+      singleFormData.category = selectedCategory
       if (prev.length === 0) {
         return [singleFormData]
       } else {

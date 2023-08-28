@@ -431,7 +431,17 @@ a {
   min-height: 70vh;
 }
 
-.MuiButtonBase-root {
+.category_button {
   background-color: #05272d !important;
+  color: #fff !important;
+}
+
+.category_button:hover {
+  background-color: #34c9b0 !important;
+  color: #fff !important;
+}
+
+.active_category {
+  background-color: #34c9b0 !important;
   color: #fff !important;
 }
