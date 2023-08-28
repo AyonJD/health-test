@@ -95,7 +95,7 @@ export default function Home() {
       </Box>
       {/* <HeroCard /> */}
       <Box className="bg-[#e2e1e0] ">
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Container maxWidth="lg" sx={{ py: 4, mt: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               {FAKE_DATA.map((item, itemIndex) => (
