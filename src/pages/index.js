@@ -78,7 +78,7 @@ export default function Home() {
         <MainNav />
         <Hero />
       </Box>
-      <HeroCard />
+      {/* <HeroCard /> */}
       <Box className="bg-[#e2e1e0] ">
         <Container maxWidth="lg" sx={{ py: 4 }}>
           <Grid container spacing={2}>

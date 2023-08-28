@@ -265,7 +265,12 @@ footer {
 .hero_section {
   padding-top: 64px;
   background: linear-gradient(45deg, #00020f, #062c31, #00020f);
-  min-height: 70vh;
+  height: 100vh;
+}
+@media only screen and (min-width: 400px) {
+  .hero_section {
+    height: 50vh;
+  }
 }
 
 .customButton_outlined {

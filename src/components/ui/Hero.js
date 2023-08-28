@@ -1,148 +1,107 @@
-import { COLORS } from '@/constant/color'
-import { Container, Grid, Box, Typography } from '@mui/material'
+'use client'
+
+import { styled } from '@mui/material/styles'
+import { Container, Box, Stack, Typography } from '@mui/material'
+import { motion } from 'framer-motion'
+
+const ContentStyle = styled(props => <Stack spacing={5} {...props} />)(
+  ({ theme }) => ({
+    zIndex: 10,
+    maxWidth: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    position: 'relative',
+    paddingBottom: theme.spacing(15),
+    [theme.breakpoints.up('md')]: {
+      margin: 'unset',
+      textAlign: 'center',
+    },
+  })
+)
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { delay: 1 } },
+  }
+
+  const headingVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { delay: 0.5 } },
+  }
+
+  const sloganVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { delay: 2 } },
+  }
+
   return (
     <Box>
       <Container>
-        <Grid container className="pt-4 pb-10">
-          <Grid item xs={12} md={8} gap={2}>
-            <Box className="flex items-center ">
+
+        {/* */}
+        <Container>
+          <ContentStyle
+            style={{
+              display: 'flex',
+              textAlign: 'center',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {/* Logo */}
+            <motion.img
+              style={{ width: 180, height: 180, cursor: 'pointer' }}
+              src="health.png"
+              alt="hero"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            />
+
+            {/* Main heading */}
+            <motion.div
+              variants={headingVariants}
+              initial="hidden"
+              animate="visible"
+              style={{ marginTop: 0 }}
+            >
+              <Typography variant="h3" sx={{ color: 'common.white' }}>
+                Health Test
+              </Typography>
+            </motion.div>
+
+            {/* Slogan */}
+            <motion.div
+              variants={sloganVariants}
+              initial="hidden"
+              animate="visible"
+              style={{ marginTop: 10 }}
+            >
               <Typography
+                variant="body2"
                 sx={{
-                  color: 'white',
-                  fontWeight: '600',
-                  fontSize: {
-                    xs: '2rem',
-                    md: '3.8rem',
+                  color: 'common.white',
+                  width: {
+                    xs: '100%',
+                    sm: '70%',
                   },
+                  textAlign: 'center',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  fontFamily: 'Saira Condensed, sans-serif',
+                  fontWeight: 500,
+                  fontSize: '1.05rem',
+                  wordSpacing: '0.1rem',
                 }}
               >
-                Best Result
+                CMS is a platform that allows you to place orders, book orders
+                and deliver orders.
               </Typography>
-              <Box
-                sx={{
-                  display: {
-                    xs: 'none',
-                    md: 'inline-block',
-                  },
-                }}
-                className="h-14 w-1 bg-white ml-[auto] mr-[auto]"
-              ></Box>
-            </Box>
-
-            <Box className="flex items-center ">
-              <Box sx={{ display: 'inline-block', marginRight: 5 }}>
-                <Typography
-                  variant="body2"
-                  sx={{ color: 'white', fontSize: 12 }}
-                >
-                  Established
-                </Typography>
-                <Typography
-                  sx={{ color: 'white', fontSize: 27, fontWeight: '600' }}
-                >
-                  2019
-                </Typography>
-              </Box>
-
-              <Typography
-                sx={{
-                  color: 'white',
-                  fontWeight: '600',
-                  fontSize: {
-                    xs: '2rem',
-                    md: '3.8rem',
-                  },
-                }}
-              >
-                In <span style={{ color: `${COLORS.PRIMARY}` }}>RMS</span>
-              </Typography>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Grid container>
-              <Grid item xs={12} sx={{ mb: 3 }}>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 15,
-                    textAlign: 'justify',
-                    mt: 2,
-                  }}
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestias reiciendis exercitationem quoLorem ipsum dolor sit
-                  amet consectetur adipisicing adipisicing elit.
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 20,
-                    textAlign: 'justify',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  80K <span className="text-[#34C9B0]">+</span>
-                </Typography>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 12,
-                    textAlign: 'justify',
-                  }}
-                >
-                  Patients
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 20,
-                    textAlign: 'justify',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  54K <span className="text-[#34C9B0]">+</span>
-                </Typography>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 12,
-                    textAlign: 'justify',
-                  }}
-                >
-                  Tests
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 20,
-                    textAlign: 'justify',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  200K <span className="text-[#34C9B0]">+</span>
-                </Typography>
-                <Typography
-                  sx={{
-                    color: 'white',
-                    fontSize: 12,
-                    textAlign: 'justify',
-                  }}
-                >
-                  Positive Reviews
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+            </motion.div>
+          </ContentStyle>
+        </Container>
       </Container>
     </Box>
   )
