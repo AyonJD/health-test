@@ -38,7 +38,7 @@ export default function Home() {
   const [subtotal, setSubtotal] = useState(0)
   const [executive, setExecutive] = useState('')
 
-  const [selectedTest, setSelectedTest] = useState('')
+  const [selectedTest, setSelectedTest] = useState([])
 
   useEffect(() => {
     setSubtotal(formData.reduce((acc, cur) => acc + cur.price, 0))
@@ -195,7 +195,7 @@ export default function Home() {
                     borderRight: 0,
                     borderTop: 0,
                     paddingBottom: 2,
-                    height: formData.length === 0 ? '325px' : '355px',
+                    height: formData.length === 0 ? '468px' : '355px',
                     overflowY: 'scroll',
                   }}
                 >

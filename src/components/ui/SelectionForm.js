@@ -12,8 +12,8 @@ import { Buttons } from '../shared/CommonButton'
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
 
 const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
-  const [selectedCenters, setSelectedCenters] = useState('')
-  const [selectedBranches, setSelectedBranches] = useState('')
+  const [selectedCenters, setSelectedCenters] = useState([])
+  const [selectedBranches, setSelectedBranches] = useState([])
   const [price, setPrice] = useState(null)
 
   const [singleFormData, setSingleFormData] = useState({
@@ -90,10 +90,9 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
             <Grid
               item
               xs={12}
-              md={selectedTest && selectedTest.length > 0 ? 6 : 12}
             ></Grid>
 
-            {selectedTest && selectedTest.length > 0 && (
+            {/* {selectedTest && selectedTest.length > 0 && ( */}
               <Grid item xs={12}>
                 <FormControl fullWidth sx={{ maxWidth: '100%' }}>
                   <InputLabel>Test</InputLabel>
@@ -103,7 +102,7 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                     value={singleFormData.test || ''}
                     onChange={handleChange}
                   >
-                    {selectedTest.map((item, itemIndex) => (
+                    {selectedTest?.map((item, itemIndex) => (
                       <MenuItem value={item.test} key={itemIndex}>
                         <Typography
                           style={{ display: 'block' }}
@@ -116,14 +115,14 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                   </Select>
                 </FormControl>
               </Grid>
-            )}
+            {/* )} */}
 
-            {selectedCenters && selectedCenters.length > 0 && (
+            {/* {selectedCenters && selectedCenters.length > 0 && ( */}
               <Grid
                 item
                 xs={12}
                 md={
-                  selectedBranches && selectedBranches.length > 0 > 0 ? 6 : 12
+                   6 
                 }
               >
                 <FormControl fullWidth sx={{ maxWidth: '100%' }}>
@@ -134,7 +133,7 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                     value={singleFormData.center || ''}
                     onChange={handleChange}
                   >
-                    {selectedCenters.map((item, itemIndex) => (
+                    {selectedCenters?.map((item, itemIndex) => (
                       <MenuItem value={item.center} key={itemIndex}>
                         <Typography
                           style={{ display: 'block' }}
@@ -150,9 +149,9 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                   </Select>
                 </FormControl>
               </Grid>
-            )}
+            {/* )} */}
 
-            {selectedBranches && selectedBranches.length > 0 && (
+            {/* {selectedBranches && selectedBranches.length > 0 && ( */}
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth sx={{ maxWidth: '100%' }}>
                   <InputLabel>Branch</InputLabel>
@@ -162,7 +161,7 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                     value={singleFormData.branches || ''}
                     onChange={handleChange}
                   >
-                    {selectedBranches.map((item, itemIndex) => (
+                    {selectedBranches?.map((item, itemIndex) => (
                       <MenuItem value={item} key={itemIndex}>
                         <Typography style={{ display: 'block' }}>
                           {item}
@@ -172,7 +171,7 @@ const SelectionForm = ({ onSet, selectedTest, selectedCategory }) => {
                   </Select>
                 </FormControl>
               </Grid>
-            )}
+            {/* )} */}
           </Grid>
         </form>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'center' }}>
