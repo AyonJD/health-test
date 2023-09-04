@@ -48,7 +48,7 @@ body {
 
 #client {
   padding-left: 10px;
-  border-left: 6px solid #34c9b0;
+  border-left: 6px solid#4e4be9;
   float: left;
 }
 
@@ -79,7 +79,7 @@ h2.name {
 }
 
 #invoice h1 {
-  color: #34c9b0;
+  color: #4e4be9;
   font-size: 2em;
   line-height: 1em;
   font-weight: normal;
@@ -116,7 +116,7 @@ h2.name {
 }
 
 #table td h3 {
-  color: #34c9b0;
+  color: #4e4be9;
   font-size: 1em;
   font-weight: normal;
   margin: 0 0 0.2em 0;
@@ -125,7 +125,7 @@ h2.name {
 #table .no {
   color: #ffffff;
   font-size: 1em;
-  background: #34c9b0;
+  background: #4e4be9;
   text-align: center;
 }
 
@@ -139,7 +139,7 @@ h2.name {
 }
 
 #table .total {
-  background: #34c9b0;
+  background: #4e4be9;
   color: #ffffff !important;
 }
 
@@ -169,7 +169,7 @@ h2.name {
 }
 
 #table tfoot tr:last-child td {
-  color: #34c9b0;
+  color: #4e4be9;
   font-size: 1em;
 }
 
@@ -184,7 +184,7 @@ h2.name {
 
 #notices {
   padding-left: 10px;
-  border-left: 6px solid #34c9b0;
+  border-left: 6px solid#4e4be9;
 }
 
 #notices .notice {
@@ -219,7 +219,7 @@ footer {
 }
 
 #nav-link:hover {
-  background-color: #34c9b0;
+  background-color: #1612f0;
   color: #fff;
   font-weight: 600;
 }
@@ -231,7 +231,7 @@ footer {
   left: 12px;
   width: 12px;
   height: 12px;
-  border: 3px solid #34c9b0;
+  border: 3px solid#1612f0;
   border-width: 0 0 3px 3px;
   opacity: 0;
   transition: all 0.3s;
@@ -250,7 +250,7 @@ footer {
   right: 12px;
   width: 12px;
   height: 12px;
-  border: 3px solid #34c9b0;
+  border: 3px solid#1612f0;
   border-width: 3px 3px 0 0;
   opacity: 0;
   transition: all 0.3s;
@@ -264,7 +264,7 @@ footer {
 
 .hero_section {
   padding-top: 64px;
-  background: linear-gradient(45deg, #00020f, #062c31, #00020f);
+  background: linear-gradient(45deg, #00020f, #4e4be9, #00020f);
   height: 100vh;
 }
 @media only screen and (min-width: 400px) {
@@ -286,10 +286,10 @@ footer {
 }
 
 .customButton_outlined:hover {
-  background-color: #34c9b0;
+  background-color: #1612f0;
   color: #fff;
   font-weight: 600;
-  border: 1px solid #34c9b0;
+  border: 1px solid#1612f0;
 }
 
 .scroll-section-outer {
@@ -418,7 +418,7 @@ a {
   width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(transparent, #34c9b0);
+  background: linear-gradient(transparent, #1612f0);
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -427,21 +427,22 @@ a {
 
 .hero_section {
   padding-top: 64px;
-  background: linear-gradient(45deg, #00020f, #062c31, #00020f);
+  background: linear-gradient(45deg, #00020f, #4e4be9, #00020f);
   min-height: 70vh;
 }
 
 .category_button {
-  background-color: #05272d !important;
+  background-color: #4e4be9 !important;
   color: #fff !important;
+  filter: drop-shadow(2px 2px 3px #4e4be9);
 }
 
 .category_button:hover {
-  background-color: #34c9b0 !important;
+  background-color: #1612f0 !important;
   color: #fff !important;
 }
 
 .active_category {
-  background-color: #34c9b0 !important;
+  background-color: #1612f0 !important;
   color: #fff !important;
 }

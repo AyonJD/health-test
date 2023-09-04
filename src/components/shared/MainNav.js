@@ -38,7 +38,7 @@ function MainNav() {
             sx={{
               display: { xs: 'none', md: 'flex' },
               mr: 1,
-              color: COLORS.PRIMARY,
+              color: COLORS.WHITE,
             }}
           />
           <Typography
@@ -52,7 +52,7 @@ function MainNav() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: COLORS.PRIMARY,
+              color: COLORS.WHITE,
               textDecoration: 'none',
             }}
           >

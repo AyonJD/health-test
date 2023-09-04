@@ -100,7 +100,7 @@ export default function Home() {
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               {FAKE_DATA.map((item, itemIndex) => (
                 <Button
-                  className={`category_button ${
+                  className={`category_button neu-light ${
                     selectedIndex === itemIndex ? 'active_category' : ''
                   }`}
                   key={itemIndex}
@@ -201,48 +201,70 @@ export default function Home() {
                 >
                   <Table
                     sx={{
-                      background: '#B2BEB5',
+                      background: '#fff',
                     }}
                   >
                     <TableHead>
                       <TableRow>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
                         >
                           Serial
                         </TableCell>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
                           align="center"
                         >
                           Category
                         </TableCell>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
                           align="center"
                         >
                           Test
                         </TableCell>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
                           align="center"
                         >
                           Center
                         </TableCell>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
                           align="center"
                         >
                           Branch
                         </TableCell>
                         <TableCell
-                          sx={{ background: '#05272D', whiteSpace: 'nowrap' }}
-                          className="text_white"
+                          sx={{
+                            background: '#E9EAFE',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                          }}
+                          // border right top radius
+                          style={{
+                            borderTopRightRadius: '8px',
+                          }}
                           align="right"
                         >
                           Price
